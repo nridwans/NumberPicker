@@ -2043,12 +2043,12 @@ public class NumberPicker extends LinearLayout {
      * @param position The wheel position to scroll to.
      */
     public void smoothScrollToPosition(int position) {
+        if (!moveToFinalScrollerPosition(mFlingScroller)) {
+            moveToFinalScrollerPosition(mAdjustScroller);
+        }
         final int currentPosition = getSelectorIndices()[mWheelMiddleItemIndex];
         if (currentPosition == position) {
             return;
-        }
-        if (!moveToFinalScrollerPosition(mFlingScroller)) {
-            moveToFinalScrollerPosition(mAdjustScroller);
         }
         smoothScroll(position > currentPosition, Math.abs(position - currentPosition));
     }
