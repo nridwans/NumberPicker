@@ -2047,6 +2047,9 @@ public class NumberPicker extends LinearLayout {
         if (currentPosition == position) {
             return;
         }
+        if (!moveToFinalScrollerPosition(mFlingScroller)) {
+            moveToFinalScrollerPosition(mAdjustScroller);
+        }
         smoothScroll(position > currentPosition, Math.abs(position - currentPosition));
     }
 
